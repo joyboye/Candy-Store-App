@@ -1,0 +1,54 @@
+﻿@page
+@model Candy_Store_App2.Pages.myCandy2.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Candies</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Candy[0].CandyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candy[0].CandyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candy[0].Manufactures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candy[0].Stores)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Candy) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CandyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CandyType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufactures.MId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stores.StoreId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CandyId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CandyId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CandyId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

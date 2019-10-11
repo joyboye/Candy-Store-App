@@ -1,0 +1,42 @@
+﻿@page
+@model Candy_Store_App2.Pages.myManu2.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Manufacturers</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer[0].ManuName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer[0].ManuAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Manufacturer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManuName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManuAddress)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
